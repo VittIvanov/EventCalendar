@@ -21,11 +21,10 @@ export const AppStyles = createGlobalStyle`
       overflow-x: hidden;
       background-size: cover;
       box-sizing: border-box;
-      outline: 1px solid red;
-      outline-offset: -1px;
 
-      @media screen and (min-width: 1281px) {
+      @media screen and (min-width: 1280px) {
         margin: 0 auto;
+        width: 100%;
 }
     }
 

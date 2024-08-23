@@ -6,19 +6,17 @@ import { HeaderWrapper } from "./styled";
 interface HeaderProps {
   date: Date;
   setDate: (date: Date) => void;
+  onLoginClick: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ date, setDate }) => {
-  const handlePrevMonth = () => {
-    setDate(new Date(date.setMonth(date.getMonth() - 1)));
-  };
-
-  const handleNextMonth = () => {
-    setDate(new Date(date.setMonth(date.getMonth() + 1)));
-  };
+const Header: React.FC<HeaderProps> = ({ date, setDate, onLoginClick }) => {
+  const capitalizeFirstLetter = (string: string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
   const formatCurrentMonth = (date: Date) => {
-    return date.toLocaleString("default", { month: "long", year: "numeric" });
+    const formattedDate = date.toLocaleString("default", { month: "long", year: "numeric" });
+    return capitalizeFirstLetter(formattedDate);
   };
 
   return (
@@ -37,7 +35,7 @@ const Header: React.FC<HeaderProps> = ({ date, setDate }) => {
         formatMonthYear={(locale, date) => formatCurrentMonth(date)}
       />
 
-      <Button className="header-button">Войти</Button>
+      <Button className="header-button" onClick={onLoginClick}>Войти</Button>
     </HeaderWrapper>
   )
 }
