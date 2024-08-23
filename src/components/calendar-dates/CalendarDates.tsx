@@ -19,7 +19,7 @@ const getDaysInMonth = (date: Date) => {
 
 const getPreviousMonthDays = (date: Date) => {
   const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
-  const startDay = firstDayOfMonth.getDay(); // 0 (Sunday) - 6 (Saturday)
+  const startDay = (firstDayOfMonth.getDay() + 6) % 7; // 0 (Monday) - 6 (Sunday)
   const previousMonthDays = [];
   if (startDay > 0) {
     const prevMonthDate = new Date(date.getFullYear(), date.getMonth(), 0);
