@@ -6,6 +6,7 @@ import { CalendarDatesContainer, CalendarDatesWrapper } from "./styled";
 interface CalendarDatesProps {
   date: Value;
   onChange: (value: Value) => void;
+  onEventClick: () => void;
 }
 
 const getDaysInMonth = (date: Date) => {
@@ -42,7 +43,7 @@ const getNextMonthDays = (date: Date, daysDisplayed: number) => {
   return nextMonthDays;
 };
 
-const CalendarDates: React.FC<CalendarDatesProps> = ({ date, onChange }) => {
+const CalendarDates: React.FC<CalendarDatesProps> = ({ date, onChange, onEventClick }) => {
   const [days, setDays] = useState<{ date: Date, isCurrentMonth: boolean }[]>([]);
 
   useEffect(() => {
@@ -79,7 +80,7 @@ const CalendarDates: React.FC<CalendarDatesProps> = ({ date, onChange }) => {
             key={index}
             date={dayData.date}
             isCurrentMonth={dayData.isCurrentMonth}
-            onAddEvent={handleAddEvent}
+            onAddEvent={onEventClick}
           />
         ))}
       </CalendarDatesWrapper>

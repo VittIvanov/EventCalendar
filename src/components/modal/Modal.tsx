@@ -5,6 +5,7 @@ import { PopupWrapper } from "../../wrappers/popup/PopupWrapper"
 import CloseIcon from "../close-icon/index";
 import { ModalWrapper } from "./styled";
 import AuthorizationCard from "../authorization-card/index";
+import EventReview from "../event-review/index";
 
 interface ModalProps {
   onClose: () => void
@@ -49,9 +50,7 @@ const Modal: React.FC<ModalProps> = ({ onClose, children, title }) => {
       <PopupWrapper ref={popupRef} >
         <CloseIcon onClose={onClose} />
         <ModalWrapper>
-          <AuthorizationCard />
-          {/* <h1 className="modal__title">{title}</h1>
-          {children} */}
+          {children}
         </ModalWrapper>
       </PopupWrapper>
     </BackDrop>
