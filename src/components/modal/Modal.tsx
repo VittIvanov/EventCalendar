@@ -13,7 +13,7 @@ interface ModalProps {
   title: string
 }
 
-const Modal: React.FC<ModalProps> = ({ onClose, children, title }) => {
+const Modal: React.FC<ModalProps> = ({ onClose, children }) => {
   const popupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

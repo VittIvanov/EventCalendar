@@ -11,18 +11,27 @@ interface EventReviewProps {
 }
 
 const EventReview: React.FC<EventReviewProps> = ({
-  title, description, date, location, participants, gallery, isCompleted
+  title,
+  description,
+  date,
+  location,
+  participants,
+  gallery,
+  isCompleted,
 }) => {
+
+  const renderCompleted = isCompleted;
+  const renderNotCompleted = !isCompleted;
+
   return (
     <EventReviewWrapper>
-      <h1 className="event-review__title">{title}</h1>
-      {
-        isCompleted &&
+      <h2 className="event-review__title">{title}</h2>
+      {renderCompleted && (
         <div>
           <img src="*" alt="иконка завершенного события" />
-          <span> событие завершено</span>
+          <span>Мероприятие уже прошло</span>
         </div>
-      }
+      )}
       <p className="event-review__text">{description}</p>
 
       <div className="event-review__info">
@@ -50,8 +59,10 @@ const EventReview: React.FC<EventReviewProps> = ({
           ))}
         </ul>
       </section>
+      {renderNotCompleted && (
+        <a href="#" className="event-review__auth-link">Войдите, чтобы присоединиться к событию</a>
+      )}
 
-      <a href="#" className="event-review__auth-link">Войдите, чтобы присоединиться к событию</a>
     </EventReviewWrapper>
   )
 }

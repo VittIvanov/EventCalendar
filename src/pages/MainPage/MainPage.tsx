@@ -7,11 +7,14 @@ import CalendarDates from "../../components/calendar-dates/CalendarDates";
 import Modal from "../../components/modal/Modal";
 import AuthorizationCard from "../../components/authorization-card/index";
 import EventReview from "../../components/event-review/index";
+import { MyEvent } from "../../types/types";
+
 
 const MainPage: React.FC = () => {
   const [date, setDate] = useState<Value>(new Date());
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [modalContent, setModalContent] = useState<"auth" | "eventReview" | null>(null);
+  const [selectedEvent, setSelectedEvent] = useState<MyEvent | null>(null);
 
 
   const handleDateChange = (value: Value) => {
@@ -23,7 +26,8 @@ const MainPage: React.FC = () => {
     setIsModalVisible(true);
   };
 
-  const showEventReview = () => {
+  const showEventReview = (event: MyEvent | null) => {
+    setSelectedEvent(event);
     setModalContent("eventReview");
     setIsModalVisible(true);
   };
@@ -43,15 +47,17 @@ const MainPage: React.FC = () => {
           onClose={closeModal}
           title={modalContent === "auth" ? "Авторизация" : "Просмотр события"}>
           {modalContent === "auth" && <AuthorizationCard />}
-          {modalContent === "eventReview" && <EventReview
-            title="Пример события"
-            description="Описание события"
-            date="2024-09-01"
-            location="Москва"
-            participants={["Участник 1", "Участник 2"]}
-            gallery={["image1.jpg", "image2.jpg"]}
-            isCompleted={false}
-          />}
+          {modalContent === "eventReview" && selectedEvent ?
+            (<EventReview
+              title={selectedEvent.title}
+              description={selectedEvent.description || ""}
+              date={selectedEvent.date}
+              location={selectedEvent.location || ""}
+              participants={selectedEvent.participants || []}
+              gallery={selectedEvent.gallery || []}
+              isCompleted={selectedEvent.isCompleted || false}
+            />) : (<p>нет информации о событии</p>)
+          }
         </Modal>
       )}
     </MainPageWrapper>
