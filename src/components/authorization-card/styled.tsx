@@ -4,6 +4,8 @@ import colors from "../../consts/colors";
 export const AuthorizationCardWrapper = styled.div`
 display: flex;
 flex-direction: column;
+padding: 120px;
+
 input { 
   caret-color: ${colors.caret_color};
 }

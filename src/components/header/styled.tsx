@@ -12,9 +12,9 @@ height: 77px;
 width: 1280px;
 margin: 0 auto;
 width: 100%;
-@media screen and (min-width: 1280px) {
+/* @media screen and (min-width: 1280px) {
 
-}
+} */
 
 .main-header_title-wrapper{
   display: flex;
@@ -63,21 +63,34 @@ width: 100%;
     width: 64px;
     height: 48px;
     background-color: ${colors.background_lightgray};
+    /* background-image: url('${process.env.PUBLIC_URL}/assets/Arrow-left.png'); */
     font-size: 31px;
     border-radius: 8px;
     margin: 4px;
     order: 1;
-    span{
-      
-    }
   }
+  
+  .react-calendar__navigation__prev-button,
+  .react-calendar__navigation__next-button {
+    text-indent: -9999px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 64px;
+    height: 48px;
+  }
+
+  .react-calendar__navigation__prev-button{
+    background-image: ${`url('${process.env.PUBLIC_URL}/assets/svg/Arrow-left.png')`};
+  }
+
+  .react-calendar__navigation__next-button{
+    background-image: ${`url('${process.env.PUBLIC_URL}/assets/svg/Arrow-right.png')`};
+  }
+
 
  .react-calendar__navigation__prev2-button,
  .react-calendar__navigation__next2-button{
     ${VisuallyHidden}
-  }
-
-  button{ 
   }
 }
 

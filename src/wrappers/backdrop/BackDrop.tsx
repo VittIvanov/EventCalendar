@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const BackDrop = styled.button`
+export const BackDrop = styled.div`
 position: absolute;
 position: fixed;
   top: 0;

@@ -33,8 +33,6 @@ const EventCard: React.FC<EventCardProps> = ({ date, onAddEvent, isCurrentMonth,
     <EventCardWrapper onClick={onAddEvent}>
       <DateLabel isCurrentMonth={isCurrentMonth}>
         <span>{date.getDate()}</span>
-        <br />
-        <span>{dateString}</span>
         {isFirstDayOfMonth && <span>{monthName}</span>}
       </DateLabel>
 

@@ -1,4 +1,4 @@
-import { mockParticipants } from "./mockParticipants";
+
 import { MyEvent } from "../types/types";
 
 export const mockEvents: MyEvent[] = [
@@ -9,8 +9,7 @@ export const mockEvents: MyEvent[] = [
     location: "г. Москва, Ленинградский проспект, 80",
     time: "12:00",
     organizer: "Илья",
-    participants: mockParticipants
-      .filter(participant => ["Антон", "Екатерина", "Денис", "Элика"].includes(participant.name)).map(participant => participant.name),
+    participants: ["Антон", "Екатерина", "Денис", "Элика"],
     more: "+200",
     gallery: [
       `${process.env.PUBLIC_URL}/assets/img/gallery/future 1.png`,
@@ -41,7 +40,6 @@ export const mockEvents: MyEvent[] = [
     time: "11:00",
     organizer: "Роман",
     participants: ["Егор", "Анна", "Рита", "Феликс"],
-    // participants: mockParticipants.map((participant) => participant.name), надо добавить именно тех, кто участвует в фестивале
     more: "+480",
     gallery: [
       `${process.env.PUBLIC_URL}/assets/img/gallery/la strada 1.png`,
@@ -51,18 +49,13 @@ export const mockEvents: MyEvent[] = [
   },
   {
     title: "День Знаний",
-    description: "Профессиональная конференция фронтенд-разработчиков. Разберем профессиональные вопросы, расширим кругозор, вдохновимся на изучение новинок и много нетворкинга.",
+    description: "",
     date: "2024-09-01",
     location: "г. Санкт-Петербург, ЦПКиО им. Кирова",
     time: "11:00",
     organizer: "Роман",
-    participants: ["Егор", "Анна", "Рита", "Феликс"],
     // participants: mockParticipants.map((participant) => participant.name), надо добавить именно тех, кто участвует в фестивале
     more: "+480",
-    gallery: [
-      `${process.env.PUBLIC_URL}/assets/img/gallery/la strada 1.png`,
-      `${process.env.PUBLIC_URL}/assets/img/gallery/la strada 2.png`, `${process.env.PUBLIC_URL}/assets/img/gallery/la strada 3.png`, `${process.env.PUBLIC_URL}/assets/img/gallery/la strada 4.png`
-    ],
     isCompleted: new Date("2024-09-01") < new Date(),
   },
 ];

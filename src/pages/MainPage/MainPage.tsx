@@ -47,17 +47,19 @@ const MainPage: React.FC = () => {
           onClose={closeModal}
           title={modalContent === "auth" ? "Авторизация" : "Просмотр события"}>
           {modalContent === "auth" && <AuthorizationCard />}
-          {modalContent === "eventReview" && selectedEvent ?
-            (<EventReview
-              title={selectedEvent.title}
-              description={selectedEvent.description || ""}
-              date={selectedEvent.date}
-              location={selectedEvent.location || ""}
-              participants={selectedEvent.participants || []}
-              gallery={selectedEvent.gallery || []}
-              isCompleted={selectedEvent.isCompleted || false}
-            />) : (<p>нет информации о событии</p>)
-          }
+          {modalContent === "eventReview" && (
+            <EventReview
+              title={selectedEvent?.title || ""}
+              description={selectedEvent?.description || ""}
+              date={selectedEvent?.date || ""}
+              organizer={selectedEvent?.organizer || ""}
+              location={selectedEvent?.location || ""}
+              participants={selectedEvent?.participants || []}
+              gallery={selectedEvent?.gallery || []}
+              isCompleted={selectedEvent?.isCompleted || false}
+            />
+
+          )}
         </Modal>
       )}
     </MainPageWrapper>
